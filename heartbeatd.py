@@ -84,6 +84,10 @@ Invariants (rule bodies):
      as empty and rewritten — losing the counters must not stop the clock.
   9. Single instance: a non-blocking flock on the lock file; a second `run`
      exits 1 with the holder's pid instead of double-firing every timer.
+ 10. Reaping is not quantized to the poll period: while any action is running
+     the loop polls at CHILD_POLL (~1 s), so `last_duration`, the recorded exit
+     code and the `timeout` enforcement are accurate to about a second instead
+     of one whole interval (poll_nap()).
 """
 
 import argparse
@@ -125,6 +129,12 @@ WEEKDAYS = {"mon": 0, "tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5,
 # Cap on the poll period: the loop also wakes at the nearest due time, so this
 # only bounds how late a timer can be when the machine's clock jumps forward.
 DEFAULT_INTERVAL = 20
+# Poll period while any action is running (invariant 10): children are only
+# reaped between rounds, so a coarser poll would quantize the recorded duration
+# and delay the `timeout` enforcement by up to a whole interval.
+CHILD_POLL = 1.0
+# Floor for one sleep: never busy-loop, never sleep 0.
+MIN_NAP = 0.05
 # TERM → KILL grace, used both by the per-action `timeout` and by shutdown.
 KILL_GRACE = 10
 # How far ahead monthly/weekly candidates are searched (days).
@@ -543,6 +553,7 @@ def spawn(profile, timer):
                           f"cwd {cwd} is not a directory")
     logf = None
     fh = None
+    logpath = None
     if profile.get("log"):
         logp = _abspath(profile["log"])
         logp.parent.mkdir(parents=True, exist_ok=True)
@@ -551,13 +562,27 @@ def spawn(profile, timer):
                  f"{' '.join(cmd)}\n".encode())
         fh.flush()
         logf = fh
-    out = logf if logf else None
+        logpath = str(logp)
     p = subprocess.Popen(cmd, cwd=str(cwd), env=action_env(profile),
-                         stdout=out, stderr=subprocess.STDOUT if out else None,
+                         stdout=logf,
+                         stderr=subprocess.STDOUT if logf else None,
                          stdin=subprocess.DEVNULL, start_new_session=True)
     if fh:
         fh.close()          # the child holds its own dup'd fd
-    return p, (str(logf) if logf else None)
+    return p, logpath
+
+
+def poll_nap(nexts, interval, children, now):
+    """How long the loop may sleep: capped by the poll interval, by the nearest
+    due time (so a timer fires at its instant, not up to an interval late) and —
+    while any action is running — by CHILD_POLL (invariant 10)."""
+    nap = float(interval)
+    due = [n for n in nexts.values() if n]
+    if due:
+        nap = min(nap, min(due) - now)
+    if children:
+        nap = min(nap, CHILD_POLL)
+    return max(MIN_NAP, nap)
 
 
 def _signal_group(pid, sig):
@@ -790,11 +815,8 @@ def cmd_run(argv):
                 break
             if stop["flag"]:
                 break
-            due = [n for n in runner.nexts.values() if n]
-            nap = args.interval
-            if due:
-                nap = min(nap, max(0.05, min(due) - time.time()))
-            deadline = time.time() + nap
+            deadline = time.time() + poll_nap(runner.nexts, args.interval,
+                                              runner.children, time.time())
             while time.time() < deadline and not stop["flag"]:
                 time.sleep(min(0.5, max(0.0, deadline - time.time())))
     finally:

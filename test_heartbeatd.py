@@ -36,9 +36,11 @@ Covers:
      never returned (invariant 1).
 + ⑧ state: atomic round-trip, a corrupt file reads as {} (invariant 8).
 + ⑨ firing: a due timer spawns, is reaped into the state (exit code, duration,
-     fire count) and its declared log carries the child's output; a failing
-     action records its exit code; a still-running action blocks the next
-     occurrence (invariant 2).
+     fire count) and its declared log carries the child's output; the fire line
+     names the log PATH; a failing action records its exit code; a still-running
+     action blocks the next occurrence (invariant 2); poll_nap's four caps
+     (interval / nearest due / CHILD_POLL while a child runs / MIN_NAP floor)
+     keep reaping from being quantized to the interval (invariant 10).
 + ⑩ the resident loop end to end: `run` fires an interval timer repeatedly and
      shuts down cleanly on SIGTERM (invariant 6: children go with the daemon).
 + ⑪ single instance: a second `run` against a held lock exits 1 naming the
@@ -508,8 +510,14 @@ def t_fire():
                   log="logs/action.log"),
         a_timer(schedule={"interval": {"seconds": 3600}}))
     entry = r.face[0]
-    rc = r.fire(entry, wait=True)
+    out = io.StringIO()
+    with contextlib.redirect_stdout(out):
+        rc = r.fire(entry, wait=True)
+    fired_log = out.getvalue()
     check("fire returns the action's exit code", rc == 0, rc)
+    check("the fire line names the log path (not a file-object repr)",
+          os.path.join(root, "logs", "action.log") in fired_log
+          and "BufferedWriter" not in fired_log, fired_log[-300:])
     st = hb.read_state(hb.STATE_FILE).get("t", {})
     check("the state records exit 0", st.get("last_exit") == 0, st)
     check("the state counts the fire", st.get("fires") == 1, st)
@@ -552,6 +560,24 @@ def t_fire():
         a_timer(schedule={"interval": {"seconds": 3600}}))
     check("the profile's env reaches the action",
           r.fire(r.face[0], wait=True) == 0)
+
+
+def t_poll_nap():
+    print("⑨a poll_nap (invariant 10: reaping is not quantized to the interval)")
+    now = 1_800_000_000.0
+    check("no timer due, no child → the poll interval",
+          hb.poll_nap({}, 20, {}, now) == 20)
+    check("a timer due sooner caps the nap",
+          hb.poll_nap({"t": now + 3}, 20, {}, now) == 3)
+    check("an overdue timer floors at MIN_NAP (no busy loop, no negative sleep)",
+          hb.poll_nap({"t": now - 100}, 20, {}, now) == hb.MIN_NAP)
+    check("a running child caps the nap at CHILD_POLL",
+          hb.poll_nap({}, 20, {"t": object()}, now) == hb.CHILD_POLL)
+    near = hb.poll_nap({"t": now + 0.2}, 20, {"t": object()}, now)
+    check("a child + a nearer due time → the nearer one",
+          abs(near - 0.2) < 1e-6, near)
+    check("None next-fires (spent once / disabled) are ignored",
+          hb.poll_nap({"a": None, "b": now + 7}, 20, {}, now) == 7)
 
 
 def t_round_and_overlap():
@@ -681,6 +707,9 @@ def t_run_subprocess():
     state = hb.read_state(os.path.join(root, "run", "heartbeatd", "state.json"))
     check("the loop fired the interval timer at least twice",
           state.get("fast", {}).get("fires", 0) >= 2, state)
+    dur = state.get("fast", {}).get("last_duration")
+    check("a fast action's recorded duration is not quantized to the interval",
+          dur is not None and dur < 2.0, state)
     p.send_signal(signal.SIGTERM)
     try:
         out = p.communicate(timeout=25)[0]
@@ -788,7 +817,7 @@ def t_cli_faces():
 
 
 TESTS = (t_profiles, t_timers, t_schedules, t_describe, t_face, t_next_fire,
-         t_state, t_fire, t_round_and_overlap, t_refresh_keeps_last_good,
+         t_state, t_fire, t_poll_nap, t_round_and_overlap, t_refresh_keeps_last_good,
          t_run_subprocess, t_cli_faces)
 
 

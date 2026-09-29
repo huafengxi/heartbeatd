@@ -14,7 +14,7 @@
 
 ## 是什么
 
-- `heartbeatd.py`：定时触发的唯一执行层（读两层 JSON 注册表 → run/status/fire/check）。**机制语义的单一事实源 = 它的模块 docstring**（注册表形态与本机面、五种 schedule 形态、全部子命令、Pointers、Invariants：misfire=skip 不补跑、同一 timer 不重叠、注册表每轮重读且坏改动保留上一份好面、子进程自成会话组可整树信号、停机带走子进程、环境 = 本进程环境 + profile 的 `env`、状态文件原子写且坏文件当空、单实例 flock）+ 各函数 docstring ⇒ 本 README 不复述、只留下面两条入口性事实。
+- `heartbeatd.py`：定时触发的唯一执行层（读两层 JSON 注册表 → run/status/fire/check）。**机制语义的单一事实源 = 它的模块 docstring**（注册表形态与本机面、五种 schedule 形态、全部子命令、Pointers、Invariants：misfire=skip 不补跑、同一 timer 不重叠、注册表每轮重读且坏改动保留上一份好面、子进程自成会话组可整树信号、停机带走子进程、环境 = 本进程环境 + profile 的 `env`、状态文件原子写且坏文件当空、单实例 flock、有子进程在跑时轮询收紧到 ~1s ⇒ 记录的时长与 timeout 生效不随 poll 周期量子化）+ 各函数 docstring ⇒ 本 README 不复述、只留下面两条入口性事实。
 - `test_heartbeatd.py`：注册表 loader、schedule → next-fire 算术、状态与触发循环的回归网（合成夹具 + 沙箱子进程；不触发任何真实注册表的动作）。
 - 零第三方依赖（Python 3 标准库），无跨仓 import（调用方只需给出注册表与可选的 host-id 映射）。
 
