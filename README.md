@@ -45,6 +45,6 @@ python3 heartbeatd/test_heartbeatd.py              # 单测：/tmp 沙箱，不�
 
 - 注册表 schema 与字段语义：调用方工作区的注册表自身（本工作区 = `heartbeats/README.md`）
 - 机制语义与不变量：`heartbeatd.py` 模块 docstring（Invariants）
-- 启停纪律、版本纪律、重启纪律：工作区根 `AGENTS.md`「服务与后台进程（make）」
+- 启停纪律、版本纪律、重启纪律：调用方工作区的运维政策（本工作区 = `services/README.md`「启停与重启纪律」与「版本纪律（硬约束）」两节）
   （按名引用形态 = `@ws-agents#behavior-rules`，只在工作区内可解）
 - 各动作的实现体与其运维册：均不在本仓（本仓只从注册表读到它们的 argv）
