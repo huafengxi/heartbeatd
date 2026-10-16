@@ -1,0 +1,260 @@
+{
+  "taskId": "rd6-t-171006",
+  "source_import": "990253da3b5c5ec83fd43a2a463f39ed6d42aadf",
+  "source_coverage_through": "4ac4631fbdbf27f3c400805b233dc1d7a9892d46",
+  "original_main": "7a7a6a09feb8c7d7810f9a8f0be9f328acde103a",
+  "raw_tip": "05b9708dc5ba32c2ba54b4bd51774a5b5862b9d1",
+  "adaptation_commit": "f551a08426670db5eefbecdc144132ef1421232c",
+  "projection_checks": [
+    {
+      "source_commit": "9809211b1e91adabb0dfda570bd4a79dc4313d21",
+      "target_commit": "f2d020cf3670083c7de074c8bc7cd5fdf09551df",
+      "record": "recovery/projections/9809211b1e91adabb0dfda570bd4a79dc4313d21.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": false
+    },
+    {
+      "source_commit": "4dd1b8eaa958ef5f236afed78a74be30e43d030b",
+      "target_commit": "1594497946749a8ab4bac380ec6f392830f1e672",
+      "record": "recovery/projections/4dd1b8eaa958ef5f236afed78a74be30e43d030b.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": false
+    },
+    {
+      "source_commit": "b5de241e352968bd317176e221050f6950089947",
+      "target_commit": "a3e989e5d34c7d2f4eca797c89b4379d9235774a",
+      "record": "recovery/projections/b5de241e352968bd317176e221050f6950089947.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "c4a35640c77a9356ce61addd6a1cde918706bff3",
+      "target_commit": "deb805d103577683fb4fe0ef48515f51e939c609",
+      "record": "recovery/projections/c4a35640c77a9356ce61addd6a1cde918706bff3.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "84184041bef2e74d05164c2fc321f4b44a1717e5",
+      "target_commit": "daecc8c05d67ecdbd30ebd2eeeed150fb7e06ad1",
+      "record": "recovery/projections/84184041bef2e74d05164c2fc321f4b44a1717e5.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "00a44146804f35a5f005d574d76b772dee159cef",
+      "target_commit": "7dfcaf2d1e4e0ad4a587f04469582fe2fb82a08e",
+      "record": "recovery/projections/00a44146804f35a5f005d574d76b772dee159cef.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "e582727a0d02b78d08914aed89fd7479e0159a19",
+      "target_commit": "abfc737804d0dc4e8c2ecefcb2bc2732241ae6ad",
+      "record": "recovery/projections/e582727a0d02b78d08914aed89fd7479e0159a19.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "ba1e707af9163b4b7ae0b554c0525d3fe5210c72",
+      "target_commit": "0e0c9783def79a5a848f2067e66779b8d43fb8b0",
+      "record": "recovery/projections/ba1e707af9163b4b7ae0b554c0525d3fe5210c72.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "68b595f33ab50108418c9a969378e7a471c200dc",
+      "target_commit": "662bb417ca2383eaf0a14dd3a42616b9d6cc1c5c",
+      "record": "recovery/projections/68b595f33ab50108418c9a969378e7a471c200dc.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "da1961bd02aca8cbf0aa72a922ef0773e757c470",
+      "target_commit": "817576075f75977f7d540a479814a7df31d2de1d",
+      "record": "recovery/projections/da1961bd02aca8cbf0aa72a922ef0773e757c470.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "f93b8eb4945bf8bf52ab0773da6623978676acd3",
+      "target_commit": "382e79af13c102059a421580ed2749438c59db4d",
+      "record": "recovery/projections/f93b8eb4945bf8bf52ab0773da6623978676acd3.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "fb758234da0bd717d511dd41999679fa0bbf4427",
+      "target_commit": "8298537252cd06f1927ed3826e3cd8403b1c33b0",
+      "record": "recovery/projections/fb758234da0bd717d511dd41999679fa0bbf4427.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    },
+    {
+      "source_commit": "4ac4631fbdbf27f3c400805b233dc1d7a9892d46",
+      "target_commit": "05b9708dc5ba32c2ba54b4bd51774a5b5862b9d1",
+      "record": "recovery/projections/4ac4631fbdbf27f3c400805b233dc1d7a9892d46.json",
+      "exact_raw_tree": true,
+      "exact_per_commit_paths_modes_blobs_deletions": true,
+      "no_op": true
+    }
+  ],
+  "paths": [
+    {
+      "target_path": ".gitignore",
+      "source_path": "heartbeatd/.gitignore",
+      "original": {
+        "mode": "100644",
+        "oid": "7a60b85e148f80966a550e5ab6a762a907c69ca6"
+      },
+      "raw_projection": {
+        "mode": "100644",
+        "oid": "7a60b85e148f80966a550e5ab6a762a907c69ca6"
+      },
+      "adapted": {
+        "mode": "100644",
+        "oid": "7a60b85e148f80966a550e5ab6a762a907c69ca6"
+      },
+      "net_source_changed": false,
+      "adaptation_changed": false,
+      "deletion": false,
+      "reason": "Unchanged original mechanism/test/ignore file; exact source blob and mode retained."
+    },
+    {
+      "target_path": "README.md",
+      "source_path": "heartbeatd/README.md",
+      "original": {
+        "mode": "100644",
+        "oid": "110a375502fb7fe6cb670addbb7deebfce54d92a"
+      },
+      "raw_projection": {
+        "mode": "100644",
+        "oid": "9b45f497298a3a2612707e2c62f22eed36ec2c52"
+      },
+      "adapted": {
+        "mode": "100644",
+        "oid": "78c9ffe2b0fdaaca1a77d20015bf3dd1066f9c5b"
+      },
+      "net_source_changed": true,
+      "adaptation_changed": true,
+      "deletion": false,
+      "reason": "Standalone command paths, local helper/root contract, validation and caller-owned policy pointers."
+    },
+    {
+      "target_path": "heartbeatd.py",
+      "source_path": "heartbeatd/heartbeatd.py",
+      "original": {
+        "mode": "100755",
+        "oid": "6bc6c524297b5b5c152574dcb507532609b31eaa"
+      },
+      "raw_projection": {
+        "mode": "100755",
+        "oid": "a68abad5dcd9413526407d023707a0208335aa2e"
+      },
+      "adapted": {
+        "mode": "100755",
+        "oid": "3d90f9ac1acd28a0b10ae50ada16a8a146e3075c"
+      },
+      "net_source_changed": true,
+      "adaptation_changed": true,
+      "deletion": false,
+      "reason": "Only helper lookup: real entry directory rather than unified parent; all daemon behavior code unchanged."
+    },
+    {
+      "target_path": "platform_paths.py",
+      "source_path": "platform_paths.py",
+      "original": null,
+      "raw_projection": {
+        "mode": "100644",
+        "oid": "fac7d40d7846eaf80865215c413071d3a7627d1a"
+      },
+      "adapted": {
+        "mode": "100644",
+        "oid": "5522f799b5f38c2a5da4dfc431ecf7eb8e77abe7"
+      },
+      "net_source_changed": true,
+      "adaptation_changed": true,
+      "deletion": false,
+      "reason": "Standalone default parent, explicit override without marker, remove six-module integration list; same workspace_root API."
+    },
+    {
+      "target_path": "test_heartbeatd.py",
+      "source_path": "heartbeatd/test_heartbeatd.py",
+      "original": {
+        "mode": "100755",
+        "oid": "6dbaa355f091ce07ad7ce983d14b46d2a52a7c69"
+      },
+      "raw_projection": {
+        "mode": "100755",
+        "oid": "6dbaa355f091ce07ad7ce983d14b46d2a52a7c69"
+      },
+      "adapted": {
+        "mode": "100755",
+        "oid": "6dbaa355f091ce07ad7ce983d14b46d2a52a7c69"
+      },
+      "net_source_changed": false,
+      "adaptation_changed": false,
+      "deletion": false,
+      "reason": "Unchanged original mechanism/test/ignore file; exact source blob and mode retained."
+    },
+    {
+      "target_path": "test_platform_paths.py",
+      "source_path": "test_platform_paths.py",
+      "original": null,
+      "raw_projection": {
+        "mode": "100644",
+        "oid": "42f1e3419ba1007398cd431ecc19d313e2bb53a5"
+      },
+      "adapted": {
+        "mode": "100644",
+        "oid": "aa1b586c24a9bb54b0c3e06c72cc112077d5c5f9"
+      },
+      "net_source_changed": true,
+      "adaptation_changed": true,
+      "deletion": false,
+      "reason": "Replace unified-layout fixtures by seven standalone root and real Bash entry contracts."
+    },
+    {
+      "target_path": "test_reload.py",
+      "source_path": "heartbeatd/test_reload.py",
+      "original": {
+        "mode": "100644",
+        "oid": "c46fc2405a8b1e023c2209dc98e8af993e2ae3c0"
+      },
+      "raw_projection": {
+        "mode": "100644",
+        "oid": "c46fc2405a8b1e023c2209dc98e8af993e2ae3c0"
+      },
+      "adapted": {
+        "mode": "100644",
+        "oid": "c46fc2405a8b1e023c2209dc98e8af993e2ae3c0"
+      },
+      "net_source_changed": false,
+      "adaptation_changed": false,
+      "deletion": false,
+      "reason": "Unchanged original mechanism/test/ignore file; exact source blob and mode retained."
+    }
+  ],
+  "identity_checks": {
+    "original_nonmain_refs_exact": true,
+    "original_main_ancestor": true,
+    "original_object_closures_reachable_and_present": true,
+    "unique_original_objects": 36,
+    "fsck_candidate_and_origin": "PASS"
+  },
+  "daemon_adaptation_is_only_local_helper_import": true,
+  "source_path_deletions": [],
+  "unexpected_path_changes": []
+}
