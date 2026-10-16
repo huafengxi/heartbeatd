@@ -107,8 +107,10 @@ from pathlib import Path
 
 # --- deployment-facing paths: every one is overridable so a test (or another
 # --- workspace) can point the daemon at a synthetic tree.
-ROOT = Path(os.environ.get("HEARTBEATD_ROOT")
-            or Path(__file__).resolve().parent.parent)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from platform_paths import workspace_root
+
+ROOT = Path(os.environ.get("HEARTBEATD_ROOT") or workspace_root(__file__))
 REGISTRY = Path(os.environ.get("HEARTBEATD_REGISTRY") or (ROOT / "heartbeats"))
 PROFILES_DIR = REGISTRY / "profiles"
 TIMERS_DIR = REGISTRY / "timers"

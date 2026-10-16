@@ -1,0 +1,81 @@
+{
+  "taskId": "rd6-t-171006",
+  "Source-Repo": "agent-platform",
+  "Source-Commit": "9809211b1e91adabb0dfda570bd4a79dc4313d21",
+  "Source-Parent": "990253da3b5c5ec83fd43a2a463f39ed6d42aadf",
+  "Source-Paths": [
+    "heartbeatd/README.md",
+    "heartbeatd/heartbeatd.py",
+    "platform_paths.py",
+    "test_platform_paths.py",
+    "README.md"
+  ],
+  "source_frozen": "fb758234da0bd717d511dd41999679fa0bbf4427",
+  "changes": [
+    {
+      "Source-Path": "heartbeatd/README.md",
+      "target_path": "README.md",
+      "before": {
+        "mode": "100644",
+        "oid": "110a375502fb7fe6cb670addbb7deebfce54d92a"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "9b45f497298a3a2612707e2c62f22eed36ec2c52"
+      },
+      "deletion": false,
+      "action": "modify"
+    },
+    {
+      "Source-Path": "heartbeatd/heartbeatd.py",
+      "target_path": "heartbeatd.py",
+      "before": {
+        "mode": "100755",
+        "oid": "6bc6c524297b5b5c152574dcb507532609b31eaa"
+      },
+      "after": {
+        "mode": "100755",
+        "oid": "a68abad5dcd9413526407d023707a0208335aa2e"
+      },
+      "deletion": false,
+      "action": "modify"
+    },
+    {
+      "Source-Path": "platform_paths.py",
+      "target_path": "platform_paths.py",
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "oid": "1bda46c0d34cedfbd81cb9312536ffbee36eeeb7"
+      },
+      "deletion": false,
+      "action": "add"
+    },
+    {
+      "Source-Path": "test_platform_paths.py",
+      "target_path": "test_platform_paths.py",
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "oid": "6943ef066afd9b356724dc96a3919ec4a274c3bc"
+      },
+      "deletion": false,
+      "action": "add"
+    }
+  ],
+  "shared_readme": {
+    "Source-Path": "README.md",
+    "before": {
+      "mode": "100644",
+      "oid": "35e59bf4297bf6579b7bd63d77d43fdeaf72b284"
+    },
+    "after": {
+      "mode": "100644",
+      "oid": "37d2afc6bda7c8ac0abc78c81f66bdb902097e38"
+    },
+    "target_path": "README.md (mechanism/root/validation sections only; adapted separately)",
+    "disposition": "heartbeatd/root contracts documented in adaptation; integrated six-module installer/portable/test-runner belong elsewhere and are not copied"
+  },
+  "no_op_projection": false,
+  "note": "raw blob/mode projection only; imports, standalone contracts and documentation adapted in a separate commit"
+}
