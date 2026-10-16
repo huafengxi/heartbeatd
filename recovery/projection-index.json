@@ -1,0 +1,91 @@
+{
+  "taskId": "rd6-t-171006",
+  "Source-Repo": "agent-platform",
+  "source_import": "990253da3b5c5ec83fd43a2a463f39ed6d42aadf",
+  "initial_frozen": "fb758234da0bd717d511dd41999679fa0bbf4427",
+  "coverage_through": "4ac4631fbdbf27f3c400805b233dc1d7a9892d46",
+  "commits": [
+    {
+      "kind": "preservation-manifest",
+      "target_commit": "16ea8ca9e6c70a70f88cd9ab5b6095e30532bebe"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "9809211b1e91adabb0dfda570bd4a79dc4313d21",
+      "target_commit": "f2d020cf3670083c7de074c8bc7cd5fdf09551df",
+      "record": "recovery/projections/9809211b1e91adabb0dfda570bd4a79dc4313d21.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "4dd1b8eaa958ef5f236afed78a74be30e43d030b",
+      "target_commit": "1594497946749a8ab4bac380ec6f392830f1e672",
+      "record": "recovery/projections/4dd1b8eaa958ef5f236afed78a74be30e43d030b.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "b5de241e352968bd317176e221050f6950089947",
+      "target_commit": "a3e989e5d34c7d2f4eca797c89b4379d9235774a",
+      "record": "recovery/projections/b5de241e352968bd317176e221050f6950089947.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "c4a35640c77a9356ce61addd6a1cde918706bff3",
+      "target_commit": "deb805d103577683fb4fe0ef48515f51e939c609",
+      "record": "recovery/projections/c4a35640c77a9356ce61addd6a1cde918706bff3.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "84184041bef2e74d05164c2fc321f4b44a1717e5",
+      "target_commit": "daecc8c05d67ecdbd30ebd2eeeed150fb7e06ad1",
+      "record": "recovery/projections/84184041bef2e74d05164c2fc321f4b44a1717e5.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "00a44146804f35a5f005d574d76b772dee159cef",
+      "target_commit": "7dfcaf2d1e4e0ad4a587f04469582fe2fb82a08e",
+      "record": "recovery/projections/00a44146804f35a5f005d574d76b772dee159cef.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "e582727a0d02b78d08914aed89fd7479e0159a19",
+      "target_commit": "abfc737804d0dc4e8c2ecefcb2bc2732241ae6ad",
+      "record": "recovery/projections/e582727a0d02b78d08914aed89fd7479e0159a19.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "ba1e707af9163b4b7ae0b554c0525d3fe5210c72",
+      "target_commit": "0e0c9783def79a5a848f2067e66779b8d43fb8b0",
+      "record": "recovery/projections/ba1e707af9163b4b7ae0b554c0525d3fe5210c72.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "68b595f33ab50108418c9a969378e7a471c200dc",
+      "target_commit": "662bb417ca2383eaf0a14dd3a42616b9d6cc1c5c",
+      "record": "recovery/projections/68b595f33ab50108418c9a969378e7a471c200dc.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "da1961bd02aca8cbf0aa72a922ef0773e757c470",
+      "target_commit": "817576075f75977f7d540a479814a7df31d2de1d",
+      "record": "recovery/projections/da1961bd02aca8cbf0aa72a922ef0773e757c470.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "f93b8eb4945bf8bf52ab0773da6623978676acd3",
+      "target_commit": "382e79af13c102059a421580ed2749438c59db4d",
+      "record": "recovery/projections/f93b8eb4945bf8bf52ab0773da6623978676acd3.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "fb758234da0bd717d511dd41999679fa0bbf4427",
+      "target_commit": "8298537252cd06f1927ed3826e3cd8403b1c33b0",
+      "record": "recovery/projections/fb758234da0bd717d511dd41999679fa0bbf4427.json"
+    },
+    {
+      "kind": "source-projection",
+      "source_commit": "4ac4631fbdbf27f3c400805b233dc1d7a9892d46",
+      "target_commit": "05b9708dc5ba32c2ba54b4bd51774a5b5862b9d1",
+      "record": "recovery/projections/4ac4631fbdbf27f3c400805b233dc1d7a9892d46.json"
+    }
+  ]
+}

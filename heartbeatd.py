@@ -107,7 +107,9 @@ from pathlib import Path
 
 # --- deployment-facing paths: every one is overridable so a test (or another
 # --- workspace) can point the daemon at a synthetic tree.
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+# Resolve this entry's real directory, including when invoked through a symlink.
+# The helper belongs to this repository; never search a sibling/unified checkout.
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 from platform_paths import workspace_root
 
 ROOT = Path(os.environ.get("HEARTBEATD_ROOT") or workspace_root(__file__))

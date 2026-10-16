@@ -1,6 +1,6 @@
-# heartbeatd/ — 声明式定时触发层
+# heartbeatd — 声明式定时触发层
 
-平台仓入口与统一安装契约见 [agent-platform](../README.md)。
+独立源码仓：Python 3 标准库，无跨仓运行依赖；`platform_paths.py` 随本仓发布。调用方提供工作区、注册表及服务监督，不需要统一平台仓、安装器或相邻 sibling。
 
 ## 收录判据（本模块边界）
 
@@ -26,17 +26,25 @@
 ## 常用命令
 
 ```
-python3 heartbeatd/heartbeatd.py run               # 常驻（由调用方的服务层监督）
-python3 heartbeatd/heartbeatd.py status            # 本机 timer 面：schedule / next / last / exit / fires
-python3 heartbeatd/heartbeatd.py status --json     # 同一份数据的 JSON 一行（聚合面输入）
-python3 heartbeatd/heartbeatd.py fire <timer>      # 人工立即触发一枚并等它跑完（唯一补跑口）
-python3 heartbeatd/heartbeatd.py check             # 只校验整份注册表（含不属本机的声明）
-python3 heartbeatd/test_heartbeatd.py              # 单测：/tmp 沙箱，不写真实工作区
+python3 heartbeatd.py run                # 常驻（由调用方的服务层监督）
+python3 heartbeatd.py status             # 本机 timer 面：schedule / next / last / exit / fires
+python3 heartbeatd.py status --json      # 同一份数据的 JSON 一行（聚合面输入）
+python3 heartbeatd.py fire <timer>        # 人工立即触发一枚并等它跑完（唯一补跑口）
+python3 heartbeatd.py check              # 只校验整份注册表（含不属本机的声明）
+python3 test_heartbeatd.py               # 单测：合成沙箱，不写真实工作区
+python3 test_reload.py                  # 热读与进程树清理回归
+python3 test_platform_paths.py          # 独立源码/helper/空格/软链/shell 契约
 ```
 
 覆写口（测试与异构部署用，缺省即调用方工作区的常规布局）：`HEARTBEATD_ROOT`、`HEARTBEATD_REGISTRY`、`HEARTBEATD_HOST_ID`、`HEARTBEATD_STATE`、`HEARTBEATD_LOCK`。
 
-单实例：`<workspace>/run/locks/heartbeatd.lock` 上的 flock（第二个 `run` 退出 1 并报持有者 pid）。
+根解析优先级：非空 `HEARTBEATD_ROOT` > 非空 `PLATFORM_WORKSPACE` > 入口文件实体所在源码仓的父目录。后两种由本地 `workspace_root(source)` 实现：`PLATFORM_WORKSPACE` 展开 `~` 并绝对化，相对显式值以调用方 cwd 为基准；默认值不随 cwd 或入口软链所在目录改变，也不要求 `.platform-root`。`HEARTBEATD_ROOT` 保留既有 `Path(value)` 语义（相对值与 `~` 不另行展开）。registry/host-id/state/lock 各专用环境变量仍逐项优先。
+
+独立 release 目录不是工作区：这类调用方须显式注入实际 root，而不是依赖默认父目录。shell 调用应给路径加引号，例如 `python3 "/path with spaces/heartbeatd/heartbeatd.py" check`；helper CLI 为 `python3 platform_paths.py <入口路径>`，支持 Bash 3.2，不使用 `readlink -f`。
+
+单实例：`<workspace>/run/locks/heartbeatd.lock` 上的 flock（第二个 `run` 退出 1 并报持有者 pid）。源码恢复不改变定时器、registry 热读、锁、misfire 或超时语义。
+
+根契约测试只读源码，构造自己的沙箱并保留夹具供检查；可由外层测试 harness 对其自建临时基目录授权清理。`BASH_UNDER_TEST=/bin/bash REQUIRE_BASH32=1 python3 test_platform_paths.py` 要求真实 Bash 3.2，不能以新 Bash 的语法检查代替。
 
 ## 部署形态（调用方侧，本模块不含）
 
@@ -46,8 +54,8 @@ python3 heartbeatd/test_heartbeatd.py              # 单测：/tmp 沙箱，不�
 
 ## 指针
 
-- 注册表 schema 与字段语义：调用方工作区的注册表自身（本工作区 = `heartbeats/README.md`）
+- 注册表 schema 与字段语义：调用方维护的注册表文档
 - 机制语义与不变量：`heartbeatd.py` 模块 docstring（Invariants）
-- 启停纪律、版本纪律、重启纪律：调用方工作区的运维政策（本工作区 = `services/README.md`「启停与重启纪律」与「版本纪律（硬约束）」两节）
-  （按名引用形态 = `@ws-agents#behavior-rules`，只在工作区内可解）
+- 启停纪律、版本纪律、重启纪律：调用方的服务生命周期与运维政策
+- 来源与独立恢复说明：[recovery/README.md](recovery/README.md)
 - 各动作的实现体与其运维册：均不在本模块（本模块只从注册表读到它们的 argv）
