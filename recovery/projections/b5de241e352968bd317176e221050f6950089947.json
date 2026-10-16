@@ -1,0 +1,12 @@
+{
+  "taskId": "rd6-t-171006",
+  "Source-Repo": "agent-platform",
+  "Source-Commit": "b5de241e352968bd317176e221050f6950089947",
+  "Source-Parent": "4dd1b8eaa958ef5f236afed78a74be30e43d030b",
+  "Source-Paths": [],
+  "source_frozen": "fb758234da0bd717d511dd41999679fa0bbf4427",
+  "changes": [],
+  "shared_readme": null,
+  "no_op_projection": true,
+  "note": "raw blob/mode projection only; imports, standalone contracts and documentation adapted in a separate commit"
+}
