@@ -1,0 +1,44 @@
+{
+  "taskId": "rd6-t-171006",
+  "candidate_tested_source_blobs": {
+    "heartbeatd.py": "3d90f9ac1acd28a0b10ae50ada16a8a146e3075c",
+    "platform_paths.py": "12be150d96ebcefe3bd39576badbad190df1633b",
+    "test_heartbeatd.py": "6dbaa355f091ce07ad7ce983d14b46d2a52a7c69",
+    "test_reload.py": "c46fc2405a8b1e023c2209dc98e8af993e2ae3c0",
+    "test_platform_paths.py": "aa1b586c24a9bb54b0c3e06c72cc112077d5c5f9"
+  },
+  "python_version": "3.13.5",
+  "tests": [
+    {
+      "entry": "test_heartbeatd.py",
+      "checks_passed": 165,
+      "checks_failed": 0,
+      "result": "PASS"
+    },
+    {
+      "entry": "test_reload.py",
+      "tests": 5,
+      "result": "PASS"
+    },
+    {
+      "entry": "test_platform_paths.py",
+      "tests": 7,
+      "shell": "GNU Bash 3.2.0(2)-release (x86_64-unknown-linux-gnu)",
+      "result": "PASS"
+    }
+  ],
+  "bash_source": {
+    "url": "https://ftp.gnu.org/gnu/bash/bash-3.2.tar.gz",
+    "sha256": "26c99025b59e30779300b68adb764f824974d267a4d7cc1b347d14a2393f9fb4",
+    "system_install": false
+  },
+  "isolation": {
+    "production_harness_root": false,
+    "synthetic_registry_only": true,
+    "real_model_calls": false,
+    "service_start_stop": false,
+    "production_fetch_test": false
+  },
+  "fixture_correction": "Initial root-contract fixture lacked an action profile; inert synthetic profile added, tests rerun successfully. No daemon behavior relaxed.",
+  "macOS": "Reverse-channel test attempt returned disconnected; no macOS execution/result confirmed. Actual Bash 3.2 was instead built and tested on Linux."
+}

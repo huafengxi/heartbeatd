@@ -1,7 +1,8 @@
 """Resolve caller workspaces for an independent source checkout.
 
-Source: agent-platform/platform_paths.py at
-9809211b1e91adabb0dfda570bd4a79dc4313d21 (unchanged through
+Source: agent-platform/platform_paths.py, introduced by
+9809211b1e91adabb0dfda570bd4a79dc4313d21 and updated by
+4dd1b8eaa958ef5f236afed78a74be30e43d030b (unchanged after that through
 fb758234da0bd717d511dd41999679fa0bbf4427).
 Standalone adaptation: no platform marker or sibling repository is required.
 """

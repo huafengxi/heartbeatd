@@ -28,9 +28,11 @@ Source-Repo, Source-Commit, Source-Parent, Source-Paths, target paths, before/af
 blob OIDs and modes, deletion and no-op status. The target commit contains exact
 raw module/helper blobs plus its record; no cross-module commit was
 cherry-picked. Unrelated commits are explicit record-only no-ops, not silently
-skipped. No deletion or reversal affects the selected source paths in this
-interval; installer addition/reversal elsewhere remains an explicit no-op here
-and is not resurrected.
+skipped. No selected file is deleted. Source
+`4dd1b8eaa958ef5f236afed78a74be30e43d030b` removes installed-alias helper
+behavior and installer-based tests; that reversal is projected exactly, before
+standalone adaptation. Installer/portable changes outside the selected paths
+are not copied or resurrected.
 
 The raw source delta affects `README.md`, `heartbeatd.py`, `platform_paths.py`
 and `test_platform_paths.py`. Original `.gitignore`, `test_heartbeatd.py` and
@@ -46,8 +48,10 @@ the final subtree. Recovery metadata is additive and does not alter execution.
   invocation load the repository-owned helper; no sibling/unified fallback.
   All timer, registry, flock, hot-read, state, process-group and timeout code
   remains untouched.
-- `platform_paths.py`: derived from source
-  `9809211b1e91adabb0dfda570bd4a79dc4313d21`, unchanged at the initial freeze.
+- `platform_paths.py`: introduced by source
+  `9809211b1e91adabb0dfda570bd4a79dc4313d21`, updated by
+  `4dd1b8eaa958ef5f236afed78a74be30e43d030b`, then unchanged through the
+  initial freeze. Both source deltas are separately projected.
   Drops the integration-only `MODULES` list and marker dependency. Interface:
   `workspace_root(source) -> absolute str`, nonempty PLATFORM_WORKSPACE first
   (expanduser + absolute resolution), otherwise real source repo's parent.
@@ -90,8 +94,8 @@ the final subtree. Recovery metadata is additive and does not alter execution.
   had no action profile. Adding a valid inert profile fixed the test fixture;
   daemon validation behavior was not relaxed. Full logs remain in the task
   artifacts. The attempted macOS reverse-channel run returned disconnected
-  before execution; no macOS result is claimed or required for the Linux
-  Bash 3.2 result above.
+  and no macOS execution/result was confirmed; no macOS result is claimed or
+  required for the Linux Bash 3.2 result above.
 
 Original-ref closure/ancestry and per-path audit are independently reproducible
 from Git objects and the source provenance records. Separate review must still
