@@ -5,6 +5,7 @@
   "original_main": "7a7a6a09feb8c7d7810f9a8f0be9f328acde103a",
   "raw_tip": "05b9708dc5ba32c2ba54b4bd51774a5b5862b9d1",
   "adaptation_commit": "f551a08426670db5eefbecdc144132ef1421232c",
+  "audited_source_revision": "c0e9ca95ea59dae77b3777610e33e4c0e6edcc20",
   "projection_checks": [
     {
       "source_commit": "9809211b1e91adabb0dfda570bd4a79dc4313d21",
@@ -182,7 +183,7 @@
       },
       "adapted": {
         "mode": "100644",
-        "oid": "5522f799b5f38c2a5da4dfc431ecf7eb8e77abe7"
+        "oid": "12be150d96ebcefe3bd39576badbad190df1633b"
       },
       "net_source_changed": true,
       "adaptation_changed": true,
