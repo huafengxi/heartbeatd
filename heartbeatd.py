@@ -50,8 +50,8 @@ Pointers — single sources, not restated here:
   registry schema and fields      the registry's own README
                                   (this workspace: heartbeats/README.md)
   how the daemon itself is kept   the deployment's service layer (this
-                                  workspace: services/profiles/heartbeatd.json
-                                  + serviced/serviced.py)
+                                  workspace: services/objects/
+                                  + rund/PROTOCOL.md)
   start/stop and restart rules    the deployment's operating rules
 
 Invariants (rule bodies):
